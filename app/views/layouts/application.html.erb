@@ -10,8 +10,11 @@
   </head>
 
   <div>
-    <%= link_to "Logout", logout_path, method: :delete %>
-    <%= link_to "Add an task!", new_task_path %>
+  <%= button_to "Add a task", new_task_path, method: :get %> 
+  <br>
+  <%= button_to "See all of my tasks", tasks_path, method: :get %>
+  <br>
+  <%= button_to "Log Out", logout_path, method: 'delete' %>
   </div>
 
   <body>

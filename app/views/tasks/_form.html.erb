@@ -1,0 +1,30 @@
+<%= form_for @task do |f| %>
+
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+
+    <div>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+
+
+    <p> Select an existing Category: </p>
+    <div>
+        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Select One' %>
+    </div>
+
+
+
+    <p> Create a Category: </p>
+    <div>
+        <%= f.fields_for :category do |c| %>
+            <%= c.label :name %>
+            <%= c.text_field :name %>
+        <% end %>
+    </div>
+    <br>
+    <%= f.submit %>
+<% end %>
