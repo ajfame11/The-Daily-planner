@@ -1,12 +1,11 @@
-<div class="card edit-form box-shadow" style="width:800px;">
+<div class="card box-shadow" >
 
         <div class="card-header">
             <h1><%= @task.title %></h1>
         </div>
         
-    <div class="card-body">
+        <div class="card-body">
         <ul class="list-group list-group-flush">
-            
 
             <li class="list-group-item">
             <h3>Description: </h3>
@@ -14,19 +13,18 @@
             </li>
 
             <li class="list-group-item">
-            <h3>Task Category: </h3>
-            <p><%= @task.category.name %></p>
+            <h3>task Genre: </h3>
+            <p><%= @task.category_id %></p>
             </li>
 
             <li class="list-group-item">
-            <h3>Task Author: </h3>
+            <h3>task Author: </h3>
             <p><%= @task.user.username %></p>
             </li>
         </ul>
     </div>
-    
         <div class="card-footer text-muted">
-            <%= button_to "Edit task", edit_task_path(@user, @task), method: :get, class:"btn btn-secondary"%><br>
-            <%= button_to "Delete task", task_path, method: :delete, class:"btn btn-danger"%>
+            <%= button_to "Edit task", edit_user_task_path(@user, @task), method: :get, class:"btn btn-secondary"%><br>
+            <%= button_to "Delete task", user_task_path, method: :delete, class:"btn btn-danger"%>
         </div>
 </div>

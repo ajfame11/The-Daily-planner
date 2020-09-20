@@ -1,5 +1,1 @@
-<h1>All the Tasks</h1>
-
-<% @tasks.each do |t| %>
-    <h3><%= link_to "#{t.title}", task_path(t) %></h3>
-<% end %>
+<%= render 'display_all_cards' %>

@@ -1,0 +1,21 @@
+<% @tasks.reverse.each do |task|%>
+    <div class="card-deck">
+        <div class="card box-shadow">
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to task.title, user_task_path(@user, task) %></h5>
+                <p class="card-text-description"><%= task.description %></p>
+                <p class="card-text">
+                    <small class="text-muted"><%=task.user.username%><br>
+                    <%= link_to category_tasks_path(task.category_id) do %>
+                        <u><%=task.category_id%></u>
+                        
+                    <% end %>
+                     </small>
+                </p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Updated at: <%=task.updated_at.strftime("%F %I:%M%p")%></small>
+            </div>
+        </div>
+    </div>   
+    <% end %>

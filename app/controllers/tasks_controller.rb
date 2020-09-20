@@ -2,10 +2,17 @@ class TasksController < ApplicationController
 
     before_action :current_user
     before_action :current_task, only: [:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in
 
     def index
-        @tasks = Task.all
+
+        if !params["user_id"] && !params["category_id"]
+          @tasks = Task.all
+        elsif !params["category_id"]
+          @tasks = @user.tasks
+        else
+          @tasks = Category.find(params["category_id"]).tasks
+        end 
+    
     end
 
     def new
@@ -17,10 +24,11 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         @task.user_id = session[:user_id]
+    
         if @task.save
-            redirect_to task_path(@task)
+          redirect_to tasks_path
         else
-            render :new
+          render :new
         end
     end
 
@@ -28,6 +36,9 @@ class TasksController < ApplicationController
     end
 
     def edit
+        if !check_users_task?
+          redirect_to tasks_path
+        end
     end
 
     def update
@@ -51,6 +62,6 @@ class TasksController < ApplicationController
 
     private
     def task_params
-        params.require(:task).permit(:title, :description, :category_id, category_attributes: [:name])
+        params.require(:task).permit(:title, :description, :user_id, :category_id, category_attributes: [:name])
     end
 end

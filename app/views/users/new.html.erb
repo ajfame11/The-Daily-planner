@@ -1,11 +1,21 @@
-<h1>Sign Up!<h1>
+<div class= "card center border-dark">
+    <div class="card post-form">
+    <div class="card-body">
 
-<%= form_for(@user) do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= render 'user_errors' %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <h1>Sign Up</h1>
+        <%= form_for @user do |f| %>
+            <%= f.label :username%><br>
+            <%= f.text_field :username%><br>
+            <%= f.label :password%><br>
+            <%= f.password_field :password%><br><br>
+            <%= f.submit "Create User"%>
+        <%end %>
+        <br>
+        <%= button_to "Login?", '/login', method: :get%>
+        <%= button_to "Signin with GitHub", '/auth/github', method: :get%>
 
-    <%= f.submit "Sign Up!" %>
-<% end %>
+    </div>
+    </div>
+</div>

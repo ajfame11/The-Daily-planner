@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 
+    before_action :authorized
     helper_method :current_user
     helper_method :logged_in?
 
@@ -8,19 +9,23 @@ class ApplicationController < ActionController::Base
     end
 
     def current_task
-        @task = Task.find_by_id(params[:id])
+        @task = Task.find_by(params[:id])
+    end 
+
+    def get_all_tasks
+        @tasks = Task.all
     end 
 
     def logged_in?
-        !!current_user
+        !current_user.nil?
     end 
 
-    def check_users_post?
-        current_post.user_id == current_user.id
-    end 
-
-    def redirect_if_not_logged_in
-        redirect_to login_path if !logged_in?
+    def authorized
+        redirect_to '/login' unless logged_in?
     end
+
+    def check_users_task?
+        current_task.user_id == current_user.id
+    end  
 
 end
