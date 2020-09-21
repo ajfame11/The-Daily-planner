@@ -11,6 +11,9 @@
                     </div>
                 <% end %>
             <% end %>
+
+            <div><%= loggedin_links %></div>
+
             <h1>Login</h1>
             <%= form_tag '/login' do %>
             <%= label_tag :username%><br>
