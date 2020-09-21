@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#logout'
 
-  root 'sessions#new'
+  root to: 'sites#index'
 
   #used for omni auth
   get '/auth/:provider/callback', to: 'sessions#create'
