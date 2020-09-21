@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     def logout
         session.clear
-        redirect_to '/login'
+        redirect_to login_path
     end
 
     def new

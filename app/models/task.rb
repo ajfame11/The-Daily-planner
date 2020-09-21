@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
-  belongs_to :genre
+  belongs_to :category
 
   validates :title, :description, presence: true 
   validates :title, :description, length: { minimum: 2 }

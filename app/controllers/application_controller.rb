@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_task
-        @task = Task.find_by(params[:id])
+        @task = Task.find_by(id: params[:id])
     end 
 
     def get_all_tasks

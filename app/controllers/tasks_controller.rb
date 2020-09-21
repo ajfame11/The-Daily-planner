@@ -4,15 +4,15 @@ class TasksController < ApplicationController
     before_action :current_task, only: [:show, :edit, :update, :destroy]
 
     def index
-
-        if !params["user_id"] && !params["category_id"]
-          @tasks = Task.all
-        elsif !params["category_id"]
-          @tasks = @user.tasks
+        if params[:category_id].present?
+          # params[:category_id] could be 'category-example-name' -> slug
+          # Load the Category by slug, not by id (params[:category_id] has SLUG, not ID) 
+          @category = Category.find_by slug: params[:category_id]
+          # Filtering tasks by Category
+          @tasks = Task.where(category_id: @category.id) 
         else
-          @tasks = Category.find(params["category_id"]).tasks
-        end 
-    
+          @tasks = Task.all
+        end
     end
 
     def new

@@ -1,1 +1,17 @@
-<%= render 'display_all_cards' %>
+<%= button_to "Create task", new_user_task_path(@user.id), method: :get, class:"btn btn-secondary"%>
+
+<% @tasks.each do |task|%>
+    <div class="card-deck" style='border: 1px solid #000; margin: 20px;'>
+        <div class="card box-shadow">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= link_to task.title, user_task_path(@user.id, task.id) %>
+                </h5>
+                
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Updated at: <%=task.updated_at.strftime("%F %I:%M%p")%></small>
+            </div>
+        </div>
+    </div>   
+    <% end %>

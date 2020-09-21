@@ -8,17 +8,19 @@
         <ul class="list-group list-group-flush">
 
             <li class="list-group-item">
-            <h3>Description: </h3>
+            <h3>Task Description: </h3>
             <p><%= @task.description %></p>
             </li>
 
             <li class="list-group-item">
-            <h3>task Genre: </h3>
-            <p><%= @task.category_id %></p>
+            <h3>Task Category: </h3>
+            <p>
+                <%= link_to @task.category.name, category_tasks_path(category_id: @task.category.slug) %>
+            </p>
             </li>
 
             <li class="list-group-item">
-            <h3>task Author: </h3>
+            <h3>Task Author: </h3>
             <p><%= @task.user.username %></p>
             </li>
         </ul>
