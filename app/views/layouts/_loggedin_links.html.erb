@@ -1,3 +1,3 @@
-<%= button_to "Log Out", logout_path, method: :delete, class:"btn btn-secondary %> |
-<%= button_to "Create task", new_user_task_path(@user.id), method: :get, class:"btn btn-secondary"%> |
-<%= button_to "All task", tasks_path, method: :get, class:"btn btn-secondary"%> |
+<%= link_to "Log Out", logout_path, method: :get, class:"btn btn-secondary" %> |
+<%= link_to "Create Tasks", new_user_task_path(@user.id), method: :get, class:"btn btn-secondary"%> |
+<%= link_to "All Tasks", tasks_path, method: :get, class:"btn btn-secondary"%> |

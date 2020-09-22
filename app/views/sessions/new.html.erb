@@ -12,7 +12,6 @@
                 <% end %>
             <% end %>
 
-            <div><%= loggedin_links %></div>
 
             <h1>Login</h1>
             <%= form_tag '/login' do %>
@@ -22,8 +21,10 @@
             <%= password_field_tag :password%><br><br>
             <%= submit_tag "Login"%>
             <%end%>
-            <br>
-            <%= button_to "Signup", '/signup', method: :get%>
+            <br><br>
+
+            <%= button_to "Signup", '/signup', method: :get%><br><br>
+            
             <%= button_to "Signin with GitHub", '/auth/github', method: :get%>
         </div>
     </div>

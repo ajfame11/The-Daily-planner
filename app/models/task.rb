@@ -5,6 +5,10 @@ class Task < ApplicationRecord
   validates :title, :description, presence: true 
   validates :title, :description, length: { minimum: 2 }
 
-  scope :task_filter, -> (id_num){ where("category_id = ?", id_num) }
+  accepts_nested_attributes_for :category
+
+  scope :by_category, -> (category_slug) { joins(:category).where('categories.slug = ? ', category_slug) }
+
+  
 
 end
