@@ -28,7 +28,7 @@
         </ul>
     </div>
         <div class="card-footer text-muted">
-            <%= button_to "Edit task", edit_user_task_path(@user, @task), method: :get, class:"btn btn-secondary"%><br>
-            <%= button_to "Delete task", user_task_path, method: :delete, class:"btn btn-danger"%>
+            <%= button_to "Edit Task", edit_user_task_path(@user, @task), method: :get, class:"btn btn-secondary"%><br>
+            <%= button_to "Delete Task", user_task_path, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
         </div>
 </div>

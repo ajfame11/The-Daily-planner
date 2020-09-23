@@ -1,0 +1,32 @@
+<%= render 'layouts/loggedin_links' %>
+
+<div>
+    <%= link_to 'Add new category', new_category_path %>
+</div>
+
+<% @categories.each do |category|%>
+    <div class="card-deck" style='border: 1px solid #000; margin: 20px;'>
+        <div class="card box-shadow">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= link_to category.name, category_path(category.id) %>
+                </h5>
+                
+                <div style='border-top: 1px solid #000; padding: 20px;'>
+                    <div style='float: left;'>
+                        <small class="text-muted">Updated at: <%=category.updated_at.strftime("%F %I:%M%p")%></small>
+                    </div>
+                    <div style='float: right;'>
+                        <% if category.tasks.any? %>
+                            <span style=çolor: #ccc; padding: 10px;'>
+                                You can't delete because there are tasks associated
+                            </span>
+                        <% else %>
+                            <%= link_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <% end %>

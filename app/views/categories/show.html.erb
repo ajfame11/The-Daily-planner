@@ -1,0 +1,19 @@
+<%= render 'layouts/loggedin_links' %>
+
+<div class="card box-shadow" >
+
+        <div class="card-header">
+            <h1><%= @category.name %></h1>
+        </div>
+
+        <div class="card-footer text-muted">
+            <%= button_to "Edit Category", edit_category_path(@category), method: :get, class:"btn btn-secondary"%><br>
+            <% if @category.tasks.any? %>
+                <span style=çolor: #ccc; padding: 10px;'>
+                    You can't delete because there are tasks associated
+                </span>
+                <% else %>
+                    <%= button_to 'Delete Category', category_path(@category), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+        </div>
+</div>
