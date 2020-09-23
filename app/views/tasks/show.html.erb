@@ -17,7 +17,7 @@
             <li class="list-group-item">
             <h3>Task Category: </h3>
             <p>
-                <%= link_to @task.category.name, category_tasks_path(category_id: @task.category.slug) %>
+                <%= link_to @task.category.name, categories_tasks_path(category_id: @task.category.slug) %>
             </p>
             </li>
 

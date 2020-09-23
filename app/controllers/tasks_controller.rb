@@ -5,9 +5,9 @@ class TasksController < ApplicationController
 
     def index
       if params[:category_id].present?
-        @tasks = Task.by_category(params[:category_id]) 
+        @tasks = current_user.tasks.by_category(params[:category_id]) 
       else
-        @tasks = Task.all
+        @tasks = current_user.tasks
       end
     end
 
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
         @task.user_id = session[:user_id]
     
         if @task.save
-          redirect_to tasks_path
+          redirect_to user_tasks_path
         else
           render :new
         end
@@ -33,13 +33,13 @@ class TasksController < ApplicationController
 
     def edit
         if !check_users_task?
-          redirect_to tasks_path
+          redirect_to user_tasks_path
         end
     end
 
     def update
         if @task.update(task_params)
-          redirect_to tasks_path
+          redirect_to user_tasks_path
         else 
           render :edit
         end 
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
     def destroy
         if check_users_task?
           @task.destroy
-          redirect_to tasks_path
+          redirect_to user_tasks_path
         end
     end
 

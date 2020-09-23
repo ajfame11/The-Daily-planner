@@ -1,19 +1,13 @@
 Rails.application.routes.draw do
 
-  #not sure what I plan on doing with this route yet
-  get 'categories/index'
-  
-
   #allows me to use chained URLs
   resources :users, only: [:new, :create, :edit, :update] do
     resources :tasks
-    get 'categories/search_result', to: 'categories#search_result'
   end
-  resources :tasks, only: [:index]
   
-  resources :categories do
-    resources :tasks
-  end
+  resources :categories
+  
+  get 'categories/:category_id/tasks', to: 'tasks#index', as: 'categories_tasks'
 
   #fixed rails auto direct issue you have to manual redirect
   get 'users/:user_id', to: 'users#edit'
@@ -24,7 +18,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#logout'
 
-  root to: 'site#index'
+  root to: 'sessions#new'
 
   #used for omni auth
   get '/auth/:provider/callback', to: 'sessions#create'
