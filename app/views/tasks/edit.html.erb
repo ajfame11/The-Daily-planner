@@ -8,14 +8,6 @@
     
     <%= f.label :category %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name %><br><br>
-
-    <p> Or create a new Category: </p>
-  <div>
-    <%=f.fields_for :category do |b| %>
-      <%= b.label :name %>
-      <%= b.text_field :name %>
-    <% end %>
-  </div><br><br>
     
     <%= f.submit "Submit" %>
 <% end %>
