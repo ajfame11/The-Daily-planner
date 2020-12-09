@@ -22,5 +22,5 @@ Rails.application.routes.draw do
 
   #used for omni auth
   get '/auth/github/callback', to: 'sessions#create'
-  #get 'auth/github', as: "github_login"
+  get 'auth/github', as: "github_login"
 end
